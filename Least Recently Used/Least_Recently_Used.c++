@@ -12,7 +12,6 @@ int main() {
     for (int &p : pages) cin >> p;
     cout << "Enter number of frames: ";
     cin >> frames;
-
     vector<int> memory;
     int faults = 0;
 
@@ -22,14 +21,15 @@ int main() {
         if (it == memory.end()) 
         {
             faults++;
-            if (memory.size() == frames) memory.pop_back();  // remove LRU
+            if (memory.size() == frames) memory.pop_back(); 
         } 
         else 
         {
-            memory.erase(it);  // move to front
+            memory.erase(it); 
         }
-        memory.insert(memory.begin(), page);  // most recently used
+        memory.insert(memory.begin(), page);
     }
+    
     int hits = n - faults;
     cout << "Total Page Faults: " << faults << endl;
     cout << "Hit ration : " << (float)hits/n * 100 <<"%" << endl;
